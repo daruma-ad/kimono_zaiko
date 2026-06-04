@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スキャンテスト用 QRコードシート</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 p-8 min-h-screen">
+
+  <div class="max-w-3xl mx-auto space-y-6">
+    <!-- ヘッダー -->
+    <div class="bg-white p-6 rounded-2xl shadow-xs border border-slate-100">
+      <h1 class="text-xl font-bold text-slate-900 mb-2">棚卸スキャン テスト用QRコードシート</h1>
+      <p class="text-sm text-slate-600 leading-relaxed">
+        アプリ初期データ（4点）のスキャン動作をテストするためのシートです。<br>
+        このページをPCの画面に表示したまま、スマートフォンのスキャンカメラで読み取ることで、棚卸し処理（実在確認）のシミュレーションが行えます。
+      </p>
+    </div>
+
+    <!-- QRコードグリッド -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      
+      <!-- 商品1 -->
+      <div class="bg-white p-6 rounded-xl border border-slate-100 flex items-center gap-6">
+        <div id="qr-001" class="bg-white p-2 border border-slate-200 rounded-lg"></div>
+        <div class="space-y-1">
+          <span class="font-mono text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">KM-2026-001</span>
+          <h2 class="font-bold text-sm text-slate-950 mt-1">本加賀友禅 訪問着</h2>
+          <p class="text-xs text-slate-500">種類: 訪問着 (仕立て上がり)</p>
+          <p class="text-[11px] text-slate-400">※初期状態で「完了済」</p>
+        </div>
+      </div>
+
+      <!-- 商品2 -->
+      <div class="bg-white p-6 rounded-xl border border-slate-100 flex items-center gap-6">
+        <div id="qr-002" class="bg-white p-2 border border-slate-200 rounded-lg"></div>
+        <div class="space-y-1">
+          <span class="font-mono text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">KM-2026-002</span>
+          <h2 class="font-bold text-sm text-slate-950 mt-1">十日町友禅 振袖</h2>
+          <p class="text-xs text-slate-500">種類: 振袖 (レンタル用)</p>
+          <p class="text-[11px] text-slate-400">※初期状態で「完了済」</p>
+        </div>
+      </div>
+
+      <!-- 商品3 (未棚卸) -->
+      <div class="bg-white p-6 rounded-xl border border-rose-200 bg-rose-50/10 flex items-center gap-6">
+        <div id="qr-003" class="bg-white p-2 border border-slate-200 rounded-lg"></div>
+        <div class="space-y-1">
+          <span class="font-mono text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">KM-2026-003</span>
+          <h2 class="font-bold text-sm text-slate-950 mt-1">本場大島紬 反物</h2>
+          <p class="text-xs text-slate-500">種類: 反物 (反物)</p>
+          <p class="text-xs font-semibold text-rose-600 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>未棚卸（スキャン推奨）
+          </p>
+        </div>
+      </div>
+
+      <!-- 商品4 (未棚卸) -->
+      <div class="bg-white p-6 rounded-xl border border-rose-200 bg-rose-50/10 flex items-center gap-6">
+        <div id="qr-004" class="bg-white p-2 border border-slate-200 rounded-lg"></div>
+        <div class="space-y-1">
+          <span class="font-mono text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">KM-2026-004</span>
+          <h2 class="font-bold text-sm text-slate-950 mt-1">西陣織 袋帯</h2>
+          <p class="text-xs text-slate-500">種類: 帯 (仕立て上がり)</p>
+          <p class="text-xs font-semibold text-rose-600 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>未棚卸（スキャン推奨）
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- フッター -->
+    <div class="text-center text-xs text-slate-400 pt-4">
+      <a href="index.html" class="text-indigo-600 hover:underline font-medium">← アプリ本体に戻る</a>
+    </div>
+  </div>
+
+  <script>
+    // QRコードの動的生成
+    const qrCodes = [
+      { id: "qr-001", code: "KM-2026-001" },
+      { id: "qr-002", code: "KM-2026-002" },
+      { id: "qr-003", code: "KM-2026-003" },
+      { id: "qr-004", code: "KM-2026-004" }
+    ];
+
+    qrCodes.forEach(item => {
+      new QRCode(document.getElementById(item.id), {
+        text: item.code,
+        width: 100,
+        height: 100,
+        colorDark: "#000000",
+        colorLight: "#FFFFFF",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    });
+  </script>
+</body>
+</html>
