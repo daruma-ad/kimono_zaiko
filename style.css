@@ -1,0 +1,111 @@
+/* --- 和モダン カスタムスタイル --- */
+
+/* 全体スクロールやフォント滑らかさ */
+html {
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: "palt"; /* 和文プロポーショナルメトリクスを有効化 */
+}
+
+/* スキャンアニメーション用のキーフレーム */
+@keyframes scan-line {
+  0% {
+    top: 5%;
+  }
+  50% {
+    top: 95%;
+  }
+  100% {
+    top: 5%;
+  }
+}
+
+.animate-scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  animation: scan-line 3s infinite linear;
+}
+
+/* スキャン成功時の画面フラッシュアニメーション */
+@keyframes flash-animation {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.flash-active {
+  animation: flash-animation 0.3s ease-out;
+}
+
+/* html5-qrcode 内部要素のスタイリング上書き */
+#reader {
+  border: none !important;
+  background-color: black;
+}
+#reader video {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* スクロールバーのカスタマイズ (和風の細い金茶) */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF6F0;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8A1C14;
+}
+
+/* --- 印刷用スタイルシート (@media print) --- */
+@media print {
+  /* 画面上のすべての通常要素を非表示にする */
+  body * {
+    visibility: hidden;
+    background: transparent !important;
+  }
+  
+  /* 印刷対象のカードとその子要素のみを表示する */
+  #print-tag-card, #print-tag-card * {
+    visibility: visible;
+  }
+  
+  /* 印刷用カードの位置とサイズ調整 */
+  #print-tag-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60mm; /* タグの標準サイズ */
+    height: 90mm;
+    border: 1px solid #1E1E24 !important;
+    padding: 15px !important;
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    background: white !important;
+  }
+
+  /* 印刷時のみ、隠してある詳細情報などを印刷したい場合の微調整 */
+  #print-tag-card #qrcode-container img, 
+  #print-tag-card #qrcode-container canvas {
+    max-width: 45mm !important;
+    max-height: 45mm !important;
+    margin: 0 auto !important;
+  }
+}
