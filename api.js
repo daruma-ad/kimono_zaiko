@@ -11,10 +11,10 @@
 // 1. 設定パラメータ
 // ==========================================
 // Google Apps Script (GAS) の連携を有効にする場合は true にします。
-const USE_GAS_API = false; 
+const USE_GAS_API = true; 
 
 // デプロイした GAS Webアプリ の URL をここに貼り付けます。
-const GAS_API_URL = "https://script.google.com/macros/s/XXXXX_YOUR_GAS_API_URL_XXXXX/exec";
+const GAS_API_URL = "https://script.google.com/macros/s/AKfycbwdov6n674qtqu2CmVGF4FuoE4opoNKbqH08F9iCYfLvWlhRBw1sPA34SlXMBKbXEq4/exec";
 
 // LocalStorageのキー名
 const LOCAL_STORAGE_KEY = "kimono_inventory_data";
