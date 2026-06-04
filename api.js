@@ -14,7 +14,7 @@
 const USE_GAS_API = true; 
 
 // デプロイした GAS Webアプリ の URL をここに貼り付けます。
-const GAS_API_URL = "https://script.google.com/macros/s/AKfycbwdov6n674qtqu2CmVGF4FuoE4opoNKbqH08F9iCYfLvWlhRBw1sPA34SlXMBKbXEq4/exec";
+const GAS_API_URL = "https://script.google.com/macros/s/AKfycby5iDW_1YY6gt-FwzabiZ0IEDKy_R-T6bOJDA8cYCLhaFbQnvfft8kot0nb8dzcl3kX/exec";
 
 // LocalStorageのキー名
 const LOCAL_STORAGE_KEY = "kimono_inventory_data";
