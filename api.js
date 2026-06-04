@@ -154,9 +154,8 @@ export async function saveNewItem(item) {
       const response = await fetch(GAS_API_URL, {
         method: "POST",
         mode: "cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        // application/json を指定するとブラウザがOPTIONS（プリフライト）リクエストを送信してしまい、
+        // GASが対応できず通信エラーになるため、ヘッダーを指定せずテキスト扱いで送信します（GAS側はJSON.parseするので問題ありません）。
         body: JSON.stringify({
           action: "register",
           data: newItem
@@ -197,9 +196,7 @@ export async function performAudit(code, newStatus = null) {
       const response = await fetch(GAS_API_URL, {
         method: "POST",
         mode: "cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        // application/json を指定するとブラウザがOPTIONSリクエストを送信してしまい通信エラーになるため、ヘッダーを指定せずテキスト扱いで送信します
         body: JSON.stringify({
           action: "audit",
           code: code,
@@ -248,9 +245,7 @@ export async function updateItemStatus(code, status) {
       const response = await fetch(GAS_API_URL, {
         method: "POST",
         mode: "cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        // application/json を指定するとブラウザがOPTIONSリクエストを送信してしまい通信エラーになるため、ヘッダーを指定せずテキスト扱いで送信します
         body: JSON.stringify({
           action: "updateStatus",
           code: code,
